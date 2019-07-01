@@ -1,4 +1,6 @@
 *.csv
 *.zip
 *.jpg
+*.npz
+*.hdf5
 **/.ipynb_checkpoints/*
