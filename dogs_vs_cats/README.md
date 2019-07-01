@@ -7,15 +7,29 @@
 1. 克隆存储库并进入到项目文件夹。
 
    ```
-   git clone https://github.com/SimonLeeGit/udacity_work.git
-   cd udacity_work/dogs_vs_cats/
+   git clone https://github.com/SimonLeeGit/udacity_project.git
+   cd udacity_project/dogs_vs_cats/
    ```
 
-2. (Optional) 默认所需数据集已经包含在项目目录 __datas__ 下，如有需要可以从kaggle上下载。[Dogs vs. Cats Redux: Kernels Edition](https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition/data)
+2. 默认所需数据集没有包含在项目目录中，可以通过kaggle命令进行下载，只需要在dogs_vs_cats目录下执行如下命令。（需要安装kaggle环境，详情请参考[https://github.com/Kaggle/kaggle-api](https://github.com/Kaggle/kaggle-api)）
+   
+   ```
+   kaggle competitions download -c dogs-vs-cats-redux-kernels-edition
+   ```
+   
+   如果需要从kaggle上下载，可以通过链接[Dogs vs. Cats Redux: Kernels Edition](https://www.kaggle.com/c/dogs-vs-cats-redux-kernels-edition/data)下载，下载后解压到dogs_vs_cats目录下，如下所示：
+   
+   > dogs_vs_cats/     
+   >> bottleneck_features.ipynb  
+   >> README.md  
+   >> requirements/  
+   >> **sample_submission.csv**  
+   >> **test.zip**  
+   >> **train.zip**  
+   >> transfer_learning.ipynb
+       
 
-3. 为数据集下载[ResNet-50](https://s3.cn-north-1.amazonaws.com.cn/static-documents/nd101/DLND+documents/DogResnet50Data.npz)关键特征，并将其放置于目录 __bottleneck_features__ 下。
-
-4. 配置安装环境及相关的Python依赖包。
+3. 配置安装环境及相关的Python依赖包。
 
    对于 __Linux__：
 
@@ -42,8 +56,20 @@
    python -c "from keras import backend"
    ```
 
-5. 打开notebook
+4. 打开notebook，打开**bottleneck_features.ipynb**，以提取迁移学习的bottleneck特征。
 
    ```
-   jupyter notebook dogs_vs_cats.ipynb
+   jupyter notebook bottleneck_features.ipynb
+   ```
+
+5. 打开notebook，打开**transfer_learning.ipynb**，使用提取的bottleneck进行迁移学习。
+
+   ```
+   jupyter notebook transfer_learning.ipynb
+   ```
+   
+6. 提交预测结果到kaggle官网中，执行如下命令。
+
+   ```
+   kaggle competitions submit -c dogs-vs-cats-redux-kernels-edition -f submission.csv -m "Message"
    ```
